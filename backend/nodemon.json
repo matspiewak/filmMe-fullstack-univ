@@ -1,0 +1,9 @@
+{
+    "env":{
+        "password": "zaq1@WSX",
+        "TWITTER_CONSUMER_KEY":"wWPDtzLT4rye2ayeCsCatZsdX",
+        "TWITTER_CONSUMER_SECRET":"rgCKf6lyk57lCLmxtMYtmRhoQkeZMbnq91PL4E68mqie4WnbEC",
+        "callbackURL":"https://tolocalhost.com",
+        "JWT_SECRET":"TrUly_sECrEt_t0KeN"
+    }
+}
