@@ -10,7 +10,7 @@ class Movies extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount = async() => {
     fetch("/movies")
       .then((res) => res.json())
       .then(
