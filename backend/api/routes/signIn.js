@@ -7,10 +7,13 @@ const router = express.Router();
 router.post("/", async (req, res, next) => {
   passport.authenticate("login", async (err, user, info) => {
     try {
-      if (err || !user) {
+      if (err) {
         const error = err
 
-        return next(error);
+        return next(error)
+      }
+      else if(!user){
+        return res.status(404).json({error: "User not found"})
       }
 
       req.login(user, { session: false }, async (error) => {
