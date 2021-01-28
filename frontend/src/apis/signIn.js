@@ -1,5 +1,4 @@
 import React from "react";
-import Cookies from 'js-cookie';
 
 import {userService} from '../services/UserService';
 class Home extends React.Component {
@@ -27,7 +26,7 @@ class Home extends React.Component {
         e.preventDefault();
 
         this.setState({ submitted: true });
-        const {email,password, returnUrl} = this.state;
+        const {email,password} = this.state;
 
         if(!(email && password)){
             return;

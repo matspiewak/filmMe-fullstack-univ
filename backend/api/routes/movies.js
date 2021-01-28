@@ -5,7 +5,7 @@ const passport = require("passport");
 
 const router = express.Router();
 
-router.get("/", (req, res, next) => {
+router.get("/",passport.authenticate('jwt', {session: false}), (req, res, next) => {
   Movie.find()
     .then((docs) => {
       res.status(200).json({
