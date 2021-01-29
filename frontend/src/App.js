@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+import "./App.css";
 
 import Navbar from "./components/Navbar";
 import MainBody from "./components/MainBody";
@@ -16,5 +17,6 @@ class App extends React.Component {
     );
   }
 }
+
 
 export default App;

@@ -18,6 +18,7 @@ const reviewSchema = mongoose.Schema({
   },
   author: {
     type: String,
+    required: true,
   },
   dateCreated: {
     type: Date,

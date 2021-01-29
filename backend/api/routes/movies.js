@@ -23,13 +23,12 @@ router.get("/", (req, res, next) => {
 router.post("/create",passport.authenticate('jwt', {session: false}), (req, res, next) => {
   const movie = new Movie({
     _id: new mongoose.Types.ObjectId(),
-    title: req.body.movieTitle,
-    author: req.body.movieAuthor,
-    category: req.body.movieCategory,
-    description: req.body.movieDescription,
-    dateCreated: req.body.movieDateCreated,
-    starring: req.body.movieStarring,
-    token: req.query.secret_token,
+    title: req.body.title,
+    filmUrl: req.body.filmUrl,
+    author: req.body.author,
+    category: req.body.category,
+    description: req.body.description,
+    dateCreated: req.body.dateCreated,
   });
   movie
     .save()
@@ -40,9 +39,7 @@ router.post("/create",passport.authenticate('jwt', {session: false}), (req, res,
       });
     })
     .catch((err) => {
-      res.status(500).json({
-        error: err.message,
-      });
+      console.log(err);
     });
 });
 
@@ -55,9 +52,7 @@ router.get("/:movieId", (req, res, next) => {
       });
     })
     .catch((err) => {
-      res.status(500).json({
-        message: err.message,
-      });
+      console.log(err);
     });
 });
 
@@ -79,9 +74,7 @@ router.patch("/:movieId", (req, res, next) => {
       });
     })
     .catch((err) => {
-      res.status(500).json({
-        error: err.message,
-      });
+      console.log(err);
     });
 });
 

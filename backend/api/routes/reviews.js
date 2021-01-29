@@ -30,8 +30,7 @@ router.post(
       movieId: req.body.movieId,
       title: req.body.reviewTitle,
       content: req.body.reviewContent,
-      author: req.user.id,
-      token: req.query.secret_token,
+      author: req.user.username,
     });
     review
       .save()

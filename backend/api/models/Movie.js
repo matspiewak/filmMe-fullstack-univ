@@ -25,8 +25,7 @@ const movieSchema = mongoose.Schema({
   dateCreated: {
     type: Date,
     default: Date.now(),
-  },
-  starring: Array
+  }
 });
 
 module.exports = mongoose.model("Movie", movieSchema);

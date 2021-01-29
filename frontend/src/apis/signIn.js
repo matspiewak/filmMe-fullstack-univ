@@ -25,7 +25,6 @@ class Home extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({ submitted: true });
     const { email, password } = this.state;
 
     if (!(email && password)) {
@@ -41,7 +40,7 @@ class Home extends React.Component {
   render() {
     const { email, password, error } = this.state;
     return (
-      <div className="login-wrapper md5 col-4">
+      <div className="login-wrapper col-4">
         <h2>Sign in</h2>
         <form name="form" onSubmit={this.handleSubmit}>
           <div className="form-group">
