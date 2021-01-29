@@ -9,6 +9,7 @@ class Movies extends React.Component {
       isLoaded: false,
       movies: [],
       isModalOpen: false,
+      test: true
     };
   }
 
@@ -35,6 +36,10 @@ class Movies extends React.Component {
     this.setState({isModalOpen: true});
   }
 
+  handleClose = () => {
+    this.setState({isModalOpen: false});
+  }
+
   render() {
 
     const { error, isLoaded, movies } = this.state;
@@ -53,7 +58,7 @@ class Movies extends React.Component {
             ))}
           </ul>
           <button type="button" onClick={this.handleAdd} className="btn btn-primary">Modal</button>
-          <MovieModal isOpen={this.state.isModalOpen} />
+          <MovieModal isOpen={this.state.isModalOpen} isClose={this.handleClose}/>
         </div>
       );
     }

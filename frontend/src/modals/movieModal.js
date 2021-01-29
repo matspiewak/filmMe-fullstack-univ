@@ -15,18 +15,15 @@ const customStyles = {
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("#root");
 class MovieModal extends React.Component {
-  constructor(props) {
-    super(props);
 
-  }
   render() {
-
     return (
       <modal>
         <Modal
           isOpen={this.props.isOpen}
           style={customStyles}
-          contentLabel="Example Modal"
+          contentLabel="Add film"
+          onRequestClose={this.props.isClose}
         >
           <div>I am a modal</div>
           <form>
@@ -36,6 +33,7 @@ class MovieModal extends React.Component {
             <button>inside</button>
             <button>the modal</button>
           </form>
+          <button onClick={this.props.isClose}>close Modal</button>
         </Modal>
       </modal>
     );
