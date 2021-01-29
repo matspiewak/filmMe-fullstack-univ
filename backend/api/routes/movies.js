@@ -39,7 +39,9 @@ router.post("/create",passport.authenticate('jwt', {session: false}), (req, res,
       });
     })
     .catch((err) => {
-      console.log(err);
+      res.status(500).json({
+        message: err.message,
+      });
     });
 });
 
@@ -52,7 +54,9 @@ router.get("/:movieId", (req, res, next) => {
       });
     })
     .catch((err) => {
-      console.log(err);
+      res.status(500).json({
+        message: err.message,
+      });
     });
 });
 
@@ -74,7 +78,9 @@ router.patch("/:movieId", (req, res, next) => {
       });
     })
     .catch((err) => {
-      console.log(err);
+      res.status(500).json({
+        error: err.message,
+      });
     });
 });
 

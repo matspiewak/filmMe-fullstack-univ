@@ -1,6 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import MovieModal from "../modals/movieModal";
+import MovieEditModal from "../modals/movieEditModal";
 
 class MovieDetail extends React.Component {
   constructor(props) {
@@ -12,7 +11,6 @@ class MovieDetail extends React.Component {
       reviews: [],
       isModalOpen: false,
     };
-    console.log(this.props.match.params.id);
   }
 
   componentDidMount = () => {
@@ -50,33 +48,60 @@ class MovieDetail extends React.Component {
   };
   render() {
     const { movies, reviews } = this.state;
-
-    let url = movies.filmUrl;
-    console.log(url);
     return (
-      <center>
         <div>
           <button
             type="button"
             onClick={this.handleAdd}
             className="btn btn-primary"
           >
-            Modal
+            Edytuj film
           </button>
-          <MovieModal
+          <MovieEditModal
             isOpen={this.state.isModalOpen}
             isClose={this.handleClose}
+            id={movies._id}
+            title={movies.title}
+            filmUrl={movies.filmUrl}
+            author={movies.author}
+            category={movies.category}
+            description={movies.description}
           />
           <ul d-flex justify-content-center>
+          <label class="col-sm-2 col-form-label">
+                          Komentarze
+                        </label>
             {reviews.map((item) => (
               <div>
-                <li>{item.title}</li>
-                <li>{item.content}</li>
+                <form>
+                  <fieldset disabled>
+                    <div className="form-group">
+                      <div className="col-sm-4">
+                        
+                        <input
+                          type="text"
+                          readonly
+                          className="form-control"
+                          value={item.title}
+                        />
+                      </div>
+                      <div className="col-sm-4">
+                        <textarea
+                          type="text"
+                          readonly
+                          className="form-control"
+                          value={item.content}
+                          style={{ height: "100px" }}
+                        />
+                      </div>
+                    </div>
+                    <br />
+                  </fieldset>
+                </form>
               </div>
             ))}
           </ul>
         </div>
-      </center>
     );
   }
 }

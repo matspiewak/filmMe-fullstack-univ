@@ -1,7 +1,4 @@
 import React from "react";
-import { Route } from "react-router-dom";
-
-import MovieDetail from './movieDetail'
 import MovieModal from '../modals/movieModal';
 class Movies extends React.Component {
   constructor(props) {
