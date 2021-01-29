@@ -30,12 +30,8 @@ let editFilm = (title, filmUrl, author, category, description) => {
       description,
     }),
   };
-  const {id} = this.props.id
-  return fetch(`/movies/${id}`, requestOptions)
+  return fetch(`/movies/${this.props.id}`, requestOptions)
     .then(handleResponse)
-    .then((movie) => {
-      return movie;
-    });
 };
 
 let handleResponse = (response) => {
