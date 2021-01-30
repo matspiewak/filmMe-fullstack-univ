@@ -139,10 +139,17 @@ class MovieModal extends React.Component {
               <div className="col">
                 <button
                   type="button"
-                  className="btn btn-outline-danger"
+                  className="btn btn-outline-warning"
                   onClick={this.props.isClose}
                 >
                   close
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-danger"
+                  onClick={this.props.handleDelete}
+                >
+                  Delete
                 </button>
                 <editFilmService id={this.props.id}/>
               </div>

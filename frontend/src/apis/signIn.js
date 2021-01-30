@@ -41,7 +41,8 @@ class Home extends React.Component {
     const { email, password, error } = this.state;
     return (
       <div className="login-wrapper col-4">
-        <h2>Sign in</h2>
+        <br />
+        <h2>Sign in</h2><br /><br />
         <form name="form" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email address</label>
@@ -65,10 +66,13 @@ class Home extends React.Component {
               value={password}
             />
           </div>
-          <div className="form-group">
-            <button type="submit" className="btn btn-primary">
+          <div className="form-group"><br />
+            <button type="submit" className="btn btn-dark">
               Sign in
             </button>
+            <a type="button" href="/signup" className="btn btn-outline-dark ">
+              Sign up
+            </a>
           </div>
           {error && <div className={"alert alert-danger"}>{error}</div>}
         </form>

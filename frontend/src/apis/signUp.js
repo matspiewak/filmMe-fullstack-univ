@@ -25,9 +25,7 @@ class Home extends React.Component {
 
       if (this.state.password !== this.state.confirmPassword) {
         this.setState({ error: "Passwords do not match" });
-      } else if (
-        !Validator.isLength(this.state.password, { min: 8 })
-      ) {
+      } else if (!Validator.isLength(this.state.password, { min: 8 })) {
         this.setState({ error: "Password must be at least 8 characters long" });
       } else if (!Validator.isEmail(this.state.email)) {
         this.setState({ error: "Email is not valid" });
@@ -39,7 +37,7 @@ class Home extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { username, email, password} = this.state;
+    const { username, email, password } = this.state;
 
     if (!(email && password)) {
       this.setState({ error: "Fields are required" });
@@ -55,7 +53,10 @@ class Home extends React.Component {
     const { username, email, password, confirmPassword, error } = this.state;
     return (
       <div className="login-wrapper md5 col-4">
+        <br />
         <h2>Sign in</h2>
+        <br />
+        <br />
         <form name="form" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email address</label>
@@ -102,7 +103,8 @@ class Home extends React.Component {
             />
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary">
+            <br />
+            <button type="submit" className="btn btn-outline-success">
               Sign up
             </button>
           </div>
