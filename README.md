@@ -253,5 +253,5 @@ Finished - no more updates
 
 ## Contact
 
-In case of questions - feel free to ask me, @matspiewak/filmMe-fullstack-univ
+In case of questions - feel free to ask me, <a href="https://github.com/matspiewak/">@matspiewak</a>
 
