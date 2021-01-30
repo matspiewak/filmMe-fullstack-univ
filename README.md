@@ -64,8 +64,193 @@ Client app should open new browser windows. To work properly, client requires co
 
 ## Screenshots
 
+<img src="/media/img/movies.png" width="49%">&nbsp;<img src="/media/img/movieDetail.png" width="49%">
+<img src="/media/img/newMovie.png" width="49%">&nbsp;<img src="/media/img/signedIn.png" width="49%">
+
+
 ## Code exanples
 
+### Post new film
+frontend:
+```
+let addFilm = (title, filmUrl, author, category, description) => {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      title,
+      filmUrl,
+      author,
+      category,
+      description,
+    }),
+  };
+
+  return fetch("/movies/create", requestOptions)
+    .then(handleResponse)
+    .then((movie) => {
+      return movie;
+    });
+};
+```
+
+backend:
+```
+router.post("/create",passport.authenticate('jwt', {session: false}), (req, res, next) => {
+  const movie = new Movie({
+    _id: new mongoose.Types.ObjectId(),
+    title: req.body.title,
+    filmUrl: req.body.filmUrl,
+    author: req.body.author,
+    category: req.body.category,
+    description: req.body.description,
+    dateCreated: req.body.dateCreated,
+  });
+  movie
+    .save()
+    .then((doc) => {
+      res.status(200).json({
+        message: "Movie successfully added",
+        info: doc,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: err.message,
+      });
+    });
+});
+```
+modal:
+```
+<Modal
+          isOpen={this.props.isOpen}
+          contentLabel="Add film"
+          onRequestClose={this.props.isClose}
+          style={customStyles}
+        >
+          <h4>Add your movie</h4>
+          <form onSubmit={this.handleSubmit}>
+            <div className="row">
+              <div className="col">
+                <label htmlFor="title">title</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="title"
+                  name="title"
+                  onChange={this.handleChange}
+                  value={title}
+                ></input>
+              </div>
+              <div className="col">
+                <label htmlFor="author">Author</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="eg. Tim Walles"
+                  name="author"
+                  onChange={this.handleChange}
+                  value={author}
+                ></input>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <label htmlFor="filmUrl">Film url address (youtube)</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="eg. https://youtu.be/UgNqzbcr2Pw"
+                  name="filmUrl"
+                  onChange={this.handleChange}
+                  value={filmUrl}
+                ></input>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <label htmlFor="category">Category</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="eg. Horror"
+                  name="category"
+                  onChange={this.handleChange}
+                  value={category}
+                ></input>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <label htmlFor="description">Description</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="film description"
+                  name="description"
+                  onChange={this.handleChange}
+                  value={description}
+                ></input>
+              </div>
+            </div>
+            <br />
+            <div className="row">
+              <div className="col">
+                <button className="btn btn-outline-dark" type="submit">
+                  send
+                </button>
+              </div>
+              <div className="col">
+                <button
+                  type="button"
+                  className="btn btn-outline-danger"
+                  onClick={this.props.isClose}
+                >
+                  close
+                </button>
+              </div>
+            </div>
+            {error && <div className={"alert alert-danger"}>{error}</div>}
+          </form>
+        </Modal>
+```
+
+model BD:
+```
+
+const movieSchema = mongoose.Schema({
+  _id: mongoose.Types.ObjectId,
+  title: {
+    type: String,
+    required: true,
+  },
+  filmUrl: {
+    type: String,
+    required: false,
+  },
+  author: {
+    type: String,
+    required: true,
+  },
+  category: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now(),
+  }
+});
+```
 ## Status
 
+Finished - no more updates
+
 ## Contact
+
+In case of questions - feel free to ask me, @matspiewak
