@@ -72,7 +72,7 @@ Client app should open new browser windows. To work properly, client requires co
 
 ### Post new film
 frontend:
-```
+```javascript
 let addFilm = (title, filmUrl, author, category, description) => {
   const requestOptions = {
     method: "POST",
@@ -95,7 +95,7 @@ let addFilm = (title, filmUrl, author, category, description) => {
 ```
 
 backend:
-```
+```javascript
 router.post("/create",passport.authenticate('jwt', {session: false}), (req, res, next) => {
   const movie = new Movie({
     _id: new mongoose.Types.ObjectId(),
@@ -122,7 +122,7 @@ router.post("/create",passport.authenticate('jwt', {session: false}), (req, res,
 });
 ```
 modal:
-```
+```javascript
 <Modal
           isOpen={this.props.isOpen}
           contentLabel="Add film"
@@ -217,7 +217,7 @@ modal:
 ```
 
 model BD:
-```
+```javascript
 
 const movieSchema = mongoose.Schema({
   _id: mongoose.Types.ObjectId,
@@ -253,5 +253,5 @@ Finished - no more updates
 
 ## Contact
 
-In case of questions - feel free to ask me, <a href="https://github.com/matspiewak/">@matspiewak</a>
+In case of any questions - feel free to ask me, <a href="https://github.com/matspiewak/">@matspiewak</a>
 
