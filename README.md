@@ -27,7 +27,7 @@ Client app should open new browser windows. To work properly, client requires co
 * Bootstrap
 
 * Frontend dependencies: 
-```
+```json
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
@@ -41,7 +41,7 @@ Client app should open new browser windows. To work properly, client requires co
     "web-vitals": "^0.2.4"
 ```
 * Backend dependencies: 
-```
+```json
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
