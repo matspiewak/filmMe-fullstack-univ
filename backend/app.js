@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
-require('./api/routes/auth')
+require('./api/auth/auth')
 
 const app = express();
 const movieRoutes = require("./api/routes/movies");
@@ -19,7 +19,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 mongoose.connect(
-  "mongodb+srv://admin:zaq1@WSX@social-advertisement-pl.ouefg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "mongodb+srv://admin:" +
+    process.env.password +
+    "@indiemovie.ouefg.mongodb.net/IndieMovieAppDB?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
